@@ -1,0 +1,25 @@
+# Thresholds for the Monday brief. All of these can also be changed live in the app sidebar.
+
+baseline:
+  weeks: 4                 # compare this week with the last N "healthy" (unflagged) weeks
+  min_weeks: 2             # need at least this many healthy weeks before judging a product
+
+under_delivery:            # -> Supply team
+  max_fill_rate: 0.80      # flag if we delivered less than 80% of a PO line...
+  min_units_short: 20      # ...and were short by at least this many units
+
+po_stopped:                # -> Platform account manager (KAM)
+  min_prior_orders: 3      # warehouse ordered this SKU in >= 3 of the 4 weeks before it stopped
+
+rank_drop:                 # -> Marketing
+  min_positions: 3         # average search rank worse by >= 3 places vs baseline
+  min_availability: 80     # ...while stock was fine (otherwise it is a stock problem, not visibility)
+
+listing_issue:             # -> Platform account manager (KAM)
+  max_sales_ratio: 0.40    # sales per store-day fell below 40% of baseline
+  min_availability: 80     # ...while stock was fine
+  max_rank_change: 3       # ...and search rank did not explain it
+
+brief:
+  min_impact_inr: 2000     # ignore issues worth less than this per week
+  max_issues: 10           # show at most this many issues; the rest go to a watchlist
